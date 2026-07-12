@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/container";
+import { Wordmark } from "@/components/wordmark";
 import { siteConfig } from "@/lib/site";
 
 export function SiteFooter() {
@@ -13,9 +14,7 @@ export function SiteFooter() {
           <div className="max-w-xs">
             <div className="flex items-center gap-2.5">
               <Image src="/logo.svg" alt="DearMelody logo" width={34} height={34} />
-              <span className="font-heading text-[22px] font-semibold text-cream">
-                Dear<span className="text-coral-light">Melody</span>
-              </span>
+              <Wordmark variant="dark" />
             </div>
             <p className="mt-3.5 text-[15px] leading-relaxed text-cream/60">
               Write your story. Hear how it feels. A private soundtrack for the

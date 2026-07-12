@@ -14,14 +14,7 @@ import {
 } from "@/components/ui/sheet";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
-
-function Wordmark() {
-  return (
-    <span className="font-heading text-[23px] font-semibold tracking-tight text-ink">
-      Dear<span className="text-coral">Melody</span>
-    </span>
-  );
-}
+import { Wordmark } from "@/components/wordmark";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -82,8 +75,8 @@ export function SiteHeader() {
             />
             <SheetContent side="right" className="bg-cream">
               <SheetHeader>
-                <SheetTitle className="font-heading text-ink">
-                  DearMelody
+                <SheetTitle>
+                  <Wordmark />
                 </SheetTitle>
               </SheetHeader>
               <nav className="mt-6 flex flex-col gap-4">

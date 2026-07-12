@@ -25,6 +25,9 @@ export function createPageMetadata({
     alternates: {
       canonical: url,
     },
+    icons: {
+      icon: "/favicon.svg",
+    },
     openGraph: {
       type: "website",
       locale: siteConfig.locale,

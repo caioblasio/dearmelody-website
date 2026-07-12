@@ -3,6 +3,13 @@ type SectionHeadingProps = {
   title: string;
   description?: string;
   align?: "left" | "center";
+  eyebrowColor?: "coral" | "plum" | "sand";
+};
+
+const eyebrowColors = {
+  coral: "text-coral",
+  plum: "text-plum",
+  sand: "text-sand",
 };
 
 export function SectionHeading({
@@ -10,21 +17,26 @@ export function SectionHeading({
   title,
   description,
   align = "center",
+  eyebrowColor = "coral",
 }: SectionHeadingProps) {
-  const alignment = align === "center" ? "text-center mx-auto" : "text-left";
+  const alignment = align === "center" ? "mx-auto text-center" : "text-left";
 
   return (
-    <div className={`max-w-2xl ${alignment}`}>
+    <div className={`max-w-[660px] ${alignment}`}>
       {eyebrow ? (
-        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-primary">
+        <p
+          className={`mb-3.5 text-[13px] font-semibold uppercase tracking-[0.2em] ${eyebrowColors[eyebrowColor]}`}
+        >
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="font-display text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
+      <h2 className="font-heading text-4xl font-semibold tracking-tight text-ink md:text-[46px] md:leading-tight">
         {title}
       </h2>
       {description ? (
-        <p className="mt-4 text-lg leading-relaxed text-muted">{description}</p>
+        <p className="mt-3.5 text-lg leading-relaxed text-body md:text-[19px]">
+          {description}
+        </p>
       ) : null}
     </div>
   );

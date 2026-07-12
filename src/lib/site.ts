@@ -1,83 +1,39 @@
 export const siteConfig = {
-  name: "Dear Melody",
-  tagline: "Turn your memories into melodies",
+  name: "DearMelody",
+  tagline: "Write your story. Hear how it feels.",
   description:
-    "Dear Melody helps you capture life's meaningful moments and transform them into personalized musical keepsakes you'll cherish forever.",
+    "DearMelody turns your journal entries into personalized songs, a private soundtrack of your memories, emotions, and most meaningful life chapters.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  appUrl: process.env.NEXT_PUBLIC_APP_URL ?? "https://dearmelody.app",
   locale: "en_US",
   contactEmail: "hello@dearmelody.com",
   nav: [
-    { label: "About", href: "/about" },
-    { label: "Blog", href: "/blog" },
+    { label: "Features", href: "/features" },
+    { label: "For you", href: "/for-you" },
     { label: "Pricing", href: "/pricing" },
-    { label: "Contact", href: "/contact" },
-  ],
+    { label: "Log in", href: "https://dearmelody.app", external: true as const },
+  ] as const,
+  footer: {
+    product: [
+      { label: "Features", href: "/features" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "For you", href: "/for-you" },
+      { label: "Compare", href: "/compare" },
+    ],
+    explore: [
+      { label: "Journal prompts", href: "/blog" },
+      { label: "Life-chapter templates", href: "/for-you#keepsakes" },
+      { label: "The blog", href: "/blog" },
+    ],
+    company: [
+      { label: "About", href: "/about" },
+      { label: "Privacy", href: "/privacy" },
+      { label: "Help center", href: "/contact" },
+    ],
+  },
   social: {
     twitter: "@dearmelody",
   },
+  disclaimer:
+    "DearMelody is a creative reflection tool, not a replacement for professional mental health support.",
 } as const;
-
-export const pricingPlans = [
-  {
-    name: "Starter",
-    price: "$9",
-    period: "per melody",
-    description: "Perfect for a single special moment.",
-    features: [
-      "One personalized melody",
-      "High-quality audio download",
-      "Shareable link",
-      "30-day revision window",
-    ],
-    cta: "Get started",
-    highlighted: false,
-  },
-  {
-    name: "Family",
-    price: "$29",
-    period: "per month",
-    description: "For families building a library of memories.",
-    features: [
-      "Up to 5 melodies per month",
-      "Priority composition queue",
-      "Unlimited sharing",
-      "Family archive access",
-      "Email support",
-    ],
-    cta: "Start free trial",
-    highlighted: true,
-  },
-  {
-    name: "Studio",
-    price: "$99",
-    period: "per month",
-    description: "For creators, brands, and power users.",
-    features: [
-      "Unlimited melodies",
-      "Custom instrumentation",
-      "Commercial usage rights",
-      "Dedicated support",
-      "API access (coming soon)",
-    ],
-    cta: "Contact sales",
-    highlighted: false,
-  },
-] as const;
-
-export const features = [
-  {
-    title: "Personalized compositions",
-    description:
-      "Every melody is crafted from your story, tone, and the emotions you want to preserve.",
-  },
-  {
-    title: "Effortless sharing",
-    description:
-      "Send a beautiful link to loved ones or download studio-quality audio in seconds.",
-  },
-  {
-    title: "Built for keepsakes",
-    description:
-      "Archive milestones, letters, and voice notes as music you can revisit anytime.",
-  },
-] as const;

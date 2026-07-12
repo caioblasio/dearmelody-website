@@ -1,56 +1,66 @@
+import Image from "next/image";
 import Link from "next/link";
+import { Container } from "@/components/container";
 import { siteConfig } from "@/lib/site";
-import { Container } from "./container";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto border-t border-border bg-surface">
-      <Container className="py-12">
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-          <div className="max-w-sm">
-            <p className="font-display text-xl font-medium text-foreground">
-              {siteConfig.name}
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-muted">
-              {siteConfig.description}
+    <footer className="mt-auto bg-ink">
+      <Container className="flex flex-col gap-10 py-14">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
+          <div className="max-w-xs">
+            <div className="flex items-center gap-2.5">
+              <Image src="/logo.svg" alt="DearMelody logo" width={34} height={34} />
+              <span className="font-heading text-[22px] font-semibold text-cream">
+                Dear<span className="text-coral-light">Melody</span>
+              </span>
+            </div>
+            <p className="mt-3.5 text-[15px] leading-relaxed text-cream/60">
+              Write your story. Hear how it feels. A private soundtrack for the
+              moments that shaped you.
             </p>
           </div>
-          <div className="flex gap-12 text-sm">
-            <div>
-              <p className="font-medium text-foreground">Product</p>
-              <ul className="mt-3 space-y-2 text-muted">
-                {siteConfig.nav.map((item) => (
-                  <li key={item.href}>
-                    <Link href={item.href} className="hover:text-foreground">
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="font-medium text-foreground">Legal</p>
-              <ul className="mt-3 space-y-2 text-muted">
-                <li>
-                  <Link href="/privacy" className="hover:text-foreground">
-                    Privacy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/terms" className="hover:text-foreground">
-                    Terms
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
+
+          <FooterColumn title="Product" links={siteConfig.footer.product} />
+          <FooterColumn title="Explore" links={siteConfig.footer.explore} />
+          <FooterColumn title="Company" links={siteConfig.footer.company} />
         </div>
-        <p className="mt-10 text-sm text-muted">
-          © {year} {siteConfig.name}. All rights reserved.
-        </p>
+
+        <div className="flex flex-col gap-3 border-t border-cream/12 pt-7 text-sm text-cream/45 md:flex-row md:items-center md:justify-between">
+          <span>
+            © {year} DearMelody. Made for the moments worth keeping.
+          </span>
+          <span>{siteConfig.disclaimer}</span>
+        </div>
       </Container>
     </footer>
+  );
+}
+
+function FooterColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: readonly { label: string; href: string }[];
+}) {
+  return (
+    <div>
+      <p className="font-heading text-sm font-semibold text-cream">{title}</p>
+      <ul className="mt-3 space-y-3">
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              className="text-[15px] text-cream/65 transition-colors hover:text-cream"
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

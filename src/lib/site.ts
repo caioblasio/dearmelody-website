@@ -1,17 +1,19 @@
+const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://app.dearmelody.app";
+
 export const siteConfig = {
   name: "DearMelody",
   tagline: "Write your story. Hear how it feels.",
   description:
     "DearMelody turns your journal entries into personalized songs, a private soundtrack of your memories, emotions, and most meaningful life chapters.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  appUrl: process.env.NEXT_PUBLIC_APP_URL ?? "https://dearmelody.app",
+  appUrl,
   locale: "en_US",
   contactEmail: "hello@dearmelody.com",
   nav: [
     { label: "Features", href: "/features" },
     { label: "For you", href: "/for-you" },
     { label: "Pricing", href: "/pricing" },
-    { label: "Log in", href: "https://dearmelody.app", external: true as const },
+    { label: "Log in", href: appUrl, external: true as const },
   ] as const,
   footer: {
     product: [

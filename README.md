@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dear Melody — Marketing Website
 
-## Getting Started
+Static marketing site for Dear Melody, built with Next.js (App Router), TypeScript, and Tailwind CSS. Pages are pre-rendered at build time (SSG) for fast loads and strong SEO.
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** — App Router, static generation, metadata API
+- **TypeScript**
+- **Tailwind CSS v4**
+- **Docker** — multi-stage build with standalone output
+
+## Pages
+
+| Route      | Description              |
+| ---------- | ------------------------ |
+| `/`        | Home (hero, features, pricing teaser, CTA) |
+| `/about`   | About                    |
+| `/blog`    | Blog index (MDX posts)   |
+| `/blog/[slug]` | Individual blog posts |
+| `/pricing` | Pricing plans            |
+| `/contact` | Contact form (placeholder) |
+| `/privacy` | Privacy policy (placeholder) |
+| `/terms`   | Terms of service (placeholder) |
+
+SEO helpers included: per-page metadata, Open Graph, Twitter cards, `sitemap.xml`, `robots.txt`, and JSON-LD on the home page.
+
+## Local development
 
 ```bash
+npm install
+cp .env.example .env.local   # optional — defaults to http://localhost:3000
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-domain.com npm run build
+npm start
+```
 
-## Learn More
+Set `NEXT_PUBLIC_SITE_URL` to your real domain so canonical URLs, sitemap, and Open Graph tags are correct.
 
-To learn more about Next.js, take a look at the following resources:
+## Docker
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Build and run with Docker Compose:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-domain.com docker compose up --build -d
+```
 
-## Deploy on Vercel
+Or build the image directly:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+docker build \
+  --build-arg NEXT_PUBLIC_SITE_URL=https://your-domain.com \
+  -t dearmelody-website .
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+docker run -p 3000:3000 dearmelody-website
+```
+
+The container runs Next.js in standalone mode on port 3000.
+
+## Project structure
+
+```
+src/
+  app/           # Routes and SEO files (sitemap, robots)
+  components/    # Header, footer, UI primitives
+  content/blog/  # MDX blog posts with frontmatter
+  lib/           # Site config, SEO, and blog helpers
+```
+
+Site copy and branding live in `src/lib/site.ts`.
+
+## Writing blog posts
+
+Add a new `.mdx` file to `src/content/blog/` with frontmatter:
+
+```mdx
+---
+title: "Your post title"
+description: "A short summary for SEO and the blog index."
+date: "2026-03-01"
+author: "Optional author name"
+---
+
+Your MDX content here. Supports **markdown**, lists, blockquotes, and [links](/contact).
+```
+
+Posts are statically generated at build time. Custom MDX component styles live in `src/components/mdx-components.tsx`.
+
+## Deploying to a VPS
+
+1. Clone the repo on your server.
+2. Set `NEXT_PUBLIC_SITE_URL` to your domain.
+3. Run `docker compose up --build -d`.
+4. Put a reverse proxy (nginx, Caddy, Traefik) in front of port 3000 with TLS.
+
+## Next steps
+
+- Replace placeholder copy in `src/lib/site.ts`
+- Add real logo and OG image assets
+- Wire the contact form to your email/CRM provider
+- Replace legal page placeholders with final copy

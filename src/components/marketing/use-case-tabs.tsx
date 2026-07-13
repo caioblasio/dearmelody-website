@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { homeUseCases } from "@/lib/content/home";
+import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type UseCaseTabsProps = {
@@ -52,6 +54,12 @@ export function UseCaseTabs({ className }: UseCaseTabsProps) {
               </div>
             ))}
           </div>
+          <Link
+            href={siteConfig.appUrl}
+            className="mt-2 self-start text-base font-semibold text-coral"
+          >
+            {useCase.cta} →
+          </Link>
         </div>
         <div
           className="relative flex min-h-[360px] items-center justify-center overflow-hidden rounded-[20px]"

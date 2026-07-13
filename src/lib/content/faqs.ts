@@ -26,16 +26,6 @@ export const homeFaqs: FaqItem[] = [
     answer:
       "No. DearMelody can support reflection and emotional expression, but it is a creative tool, not a medical, diagnostic, or therapeutic service, and not a replacement for professional care.",
   },
-  {
-    question: "Do I have to journal every day?",
-    answer:
-      "Not at all. Write every day or only when something matters. Your soundtrack grows at your own pace, with no pressure and no streak guilt.",
-  },
-  {
-    question: "Can other people hear my songs?",
-    answer:
-      "Only if you want them to. Keep a melody private, share it through a private link, or post it publicly, the choice is always yours.",
-  },
 ];
 
 export const pricingFaqs: FaqItem[] = [

@@ -39,6 +39,11 @@ export const homeValueRows = [
     description: "show what a moment looked like",
     bg: "#FFE9CF",
     fg: "#FF7A59",
+    opacity: 0.5,
+    rowBg: "#FFF6EC",
+    rowBorder: "#F3E8D8",
+    shadow: "none",
+    useBrandIcon: false,
   },
   {
     icon: "edit_note",
@@ -46,6 +51,11 @@ export const homeValueRows = [
     description: "record what actually happened",
     bg: "#F1EAF7",
     fg: "#5B3B8C",
+    opacity: 0.75,
+    rowBg: "#FFF6EC",
+    rowBorder: "#F3E8D8",
+    shadow: "none",
+    useBrandIcon: false,
   },
   {
     icon: "music_note",
@@ -53,6 +63,11 @@ export const homeValueRows = [
     description: "preserves how it truly felt",
     bg: "#FFD66B",
     fg: "#3A2E45",
+    opacity: 1,
+    rowBg: "#FFFDF8",
+    rowBorder: "#FF7A59",
+    shadow: "0 12px 28px rgba(255,122,89,0.16)",
+    useBrandIcon: true,
   },
 ];
 
@@ -69,6 +84,7 @@ export const homeUseCases = [
     ],
     melo: "/melo-journaling.svg",
     gradient: "linear-gradient(150deg,#FFB27A,#FFD66B)",
+    cta: "Start your everyday journal",
   },
   {
     label: "Creative self-expression",
@@ -82,6 +98,7 @@ export const homeUseCases = [
     ],
     melo: "/melo-songs-ready.svg",
     gradient: "linear-gradient(150deg,#FF7A59,#8B5BB0)",
+    cta: "Score your life",
   },
   {
     label: "Reflection & self-care",
@@ -95,6 +112,7 @@ export const homeUseCases = [
     ],
     melo: "/melo-listening.svg",
     gradient: "linear-gradient(150deg,#5B3B8C,#8B5BB0)",
+    cta: "Start reflecting",
   },
   {
     label: "Parents & families",
@@ -108,6 +126,7 @@ export const homeUseCases = [
     ],
     melo: "/melo-official.svg",
     gradient: "linear-gradient(150deg,#FFD66B,#FF9A6B)",
+    cta: "Capture their first year",
   },
   {
     label: "Keepsakes & gifts",
@@ -121,6 +140,7 @@ export const homeUseCases = [
     ],
     melo: "/melo-songs-ready.svg",
     gradient: "linear-gradient(150deg,#FF9A6B,#5B3B8C)",
+    cta: "Make a keepsake song",
   },
 ];
 

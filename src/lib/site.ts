@@ -10,22 +10,21 @@ export const siteConfig = {
   locale: "en_US",
   contactEmail: "hello@dearmelody.com",
   nav: [
-    { label: "Features", href: "/features" },
-    { label: "For you", href: "/for-you" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Log in", href: appUrl, external: true as const },
+    { label: "How it works", href: "/#how" },
+    { label: "For you", href: "/#usecases" },
+    { label: "Pricing", href: "/#pricing" },
+    { label: "FAQ", href: "/#faq" },
   ] as const,
   footer: {
-    product: [
-      { label: "Features", href: "/features" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "For you", href: "/for-you" },
-      { label: "Compare", href: "/compare" },
+    onPage: [
+      { label: "How it works", href: "/#how" },
+      { label: "Use cases", href: "/#usecases" },
+      { label: "Life chapters", href: "/#chapters" },
+      { label: "Pricing", href: "/#pricing" },
     ],
     explore: [
-      { label: "Journal prompts", href: "/blog" },
-      { label: "Life-chapter templates", href: "/for-you#keepsakes" },
       { label: "The blog", href: "/blog" },
+      { label: "Alternatives", href: "/compare" },
     ],
     company: [
       { label: "About", href: "/about" },

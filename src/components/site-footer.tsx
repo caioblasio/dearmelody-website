@@ -22,7 +22,7 @@ export function SiteFooter() {
             </p>
           </div>
 
-          <FooterColumn title="Product" links={siteConfig.footer.product} />
+          <FooterColumn title="On this page" links={siteConfig.footer.onPage} />
           <FooterColumn title="Explore" links={siteConfig.footer.explore} />
           <FooterColumn title="Company" links={siteConfig.footer.company} />
         </div>
